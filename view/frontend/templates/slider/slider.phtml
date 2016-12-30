@@ -1,0 +1,133 @@
+<?php
+/**
+ * Acx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the agilecodex.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.agilecodex.com/license-agreement
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Acx
+ * @package     Acx_Slider
+ * @copyright   Copyright (c) 2016 Acx (http://www.agilecodex.com/)
+ * @license     http://www.agilecodex.com/license-agreement
+ */
+?>
+<?php
+/** @var \Acx\Slider\Block\Slider $block */
+$htmlId = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Acx_Slider::css/flexslider.css') ?>">
+<script type="text/javascript">
+(function ()
+{
+    var flexSliderSelector = '<?php echo $htmlId; ?>';
+    require(['jquery', 'acx/slider'], function ($)
+    {
+        var fitImageSlider = function (slider)
+        {
+            if (slider && slider[0])
+            {
+                var height = $(slider[0]).find('.slides li img').height();
+                $(slider[0]).find('.slides li img').each(function (index, element)
+                {
+                    if ($(element).height() > height)
+                    {
+                        height = $(element).height();
+                    }
+                });
+                $(slider[0]).find('.slides li,.slides li img').css('height', height + 'px');
+
+                var height = $(slider[0]).find('.slides li:first').height();
+                var width = $(slider[0]).find('.slides li:first').width();
+                $(slider[0]).find('.slides li > .flex-caption').each(function (index, element)
+                {
+                    $(element).css('height', height + 'px');
+                    $(element).css('width', width + 'px');
+                });
+            }
+        }
+        $(document).ready(function ($)
+        {
+            $('.' + flexSliderSelector).flexslider({
+                animation: "slide",
+                animationLoop: true,
+                pauseOnHover: true,
+                touch: true,
+                <?php 
+                    if(!$block->getAutoplay())
+                    {
+                        echo "animating: 'false',";
+                    }
+                    else
+                    {
+                        echo "animating: ".$block->getSliderSpeed().",";
+                    }
+                    
+                    if($block->getNav())
+                    {
+                        echo "controlNav: '".$block->getNavType()."',";
+                    }
+                    else
+                    {
+                        echo "controlNav: false,";
+                    }
+                    
+                    if(!$block->getNavButton()) echo "directionNav: false,";
+                ?>
+                start: function (slider) {
+                    fitImageSlider(slider);
+                }
+            });
+        });
+    });
+})();
+</script>
+
+<div class="acx-slider-standard">
+    <?php
+    if($block->getData("show_title"))
+    {
+        ?>
+        <div class="acx-slider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703;">
+        <strong><span><?php echo $block->getTitle(); ?></span></strong>
+        </div>
+        <?php
+    }
+    ?>
+    <div class="acx-slider-flex-slider" style="margin: auto; margin-bottom: 40px;">
+        <div id="<?php echo $htmlId ?>" class="flexslider flexslider-content-image <?php echo $htmlId ?>" style="margin:auto">
+            <ul class="slides">
+                <?php foreach ($bannerCollection as $banner)
+                {
+                ?>
+                    <li data-thumb="<?php echo $block->getBannerImageUrl($banner) ?>">
+                        <img alt="<?php echo $banner->getImageAlt() ?>" 
+                             src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                        <?php if($banner->getCaption()){ ?>
+                            <div class="flex-caption">
+                                <?php echo $banner->getCaption(); ?>
+                            </div>
+                        <?php } ?>
+                    </li>
+                    
+                <?php
+                } 
+                ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<style>
+    .flex-viewport .slides li{
+        margin-bottom: 0px !important;
+    }
+</style>
