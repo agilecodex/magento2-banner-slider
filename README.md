@@ -2,20 +2,7 @@
 	<section id="documenter_cover">
 	<h1>Acx Slider</h1>
 	<h2>Add Slider To Your Magento 2x Store</h2>
-	<div id="documenter_buttons">
-		
-	</div>
-	</section>
-	
-	<section id="introduction">
-	<div class="page-header"><h3>Introduction</h3><hr class="notop"></div>
-<section id="introduction">
-	<p>
-		<strong>Acx Slider</strong> is a extension for add slider to your magento 2 store.</p>
-	<p>
-		Compatible with Magento:<strong> 2x</strong></p>
-</section>
-</section>
+
 <section id="installation">
 	<div class="page-header"><h3>Installation</h3><hr class="notop"></div>
 <p class="warning">
