@@ -1,19 +1,20 @@
 {
-  "name": "acx/slider",
-  "description": "N/A",
+  "name": "acx/module-brandslider",
+  "description": "Magento 2 Brand Slider Extension",
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0"
+        "php": "~7.1.3||~7.2.0||~7.3.0||~7.4.0",
+        "acx/module-backend": "^1.2.5"
   },
   "type": "magento2-module",
-  "version": "1.7.0",
+  "version": "2.3.7",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
   ],
   "authors": [
     {
-      "name": "Wasim haider Chowdhury",
-      "email": "wasim@agilecodex.com",
+      "name": "Agile Codex Ltd.",
+      "email": "magento@agilecodex.com",
       "homepage": "https://www.agilecodex.com/",
       "role": "Developer"
     }
@@ -23,7 +24,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Acx\\Slider\\": ""
+      "Acx\\BrandSlider\\": ""
     }
   }
 }

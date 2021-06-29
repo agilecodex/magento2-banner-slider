@@ -4,10 +4,10 @@ var config = {
         },
     },
     paths: {
-        'acx/slider': 'Acx_Slider/js/flexslider-min'
+        'acx/brandslider': 'Acx_BrandSlider/js/flexslider-min'
     },
     shim: {
-        'acx/slider': {
+        'acx/brandslider': {
             deps: ['jquery']
         },
     }

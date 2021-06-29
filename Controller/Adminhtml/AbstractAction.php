@@ -1,33 +1,19 @@
 <?php
 
 /**
- * Acx
- *
- * NOTICE OF LICENSE
- *
  * This source file is subject to the agilecodex.com license that is
  * available through the world-wide-web at this URL:
- * http://www.agilecodex.com/license-agreement
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this extension to newer
- * version in the future.
- *
- * @category    Acx
- * @package     Acx_Slider
- * @copyright   Copyright (c) 2016 Acx (http://www.agilecodex.com/)
- * @license     http://www.agilecodex.com/license-agreement
+ * https://www.agilecodex.com/license-agreement
  */
 
-namespace Acx\Slider\Controller\Adminhtml;
+namespace Acx\BrandSlider\Controller\Adminhtml;
 
 /**
  * Abstract Action
  * @category Acx
- * @package  Acx_Slider
- * @module   Slider
- * @author   Wasim haider Chowdhury
+ * @package  Acx_BrandSlider
+ * @module   BrandSlider
+ * @author   dev@agilecodex.com
  */
 abstract class AbstractAction extends \Magento\Backend\App\Action
 {
@@ -63,18 +49,18 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
     protected $_resultPageFactory;
 
     /**
-     * Banner factory.
+     * Brand factory.
      *
-     * @var \Acx\Slider\Model\BannerFactory
+     * @var \Acx\BrandSlider\Model\BrandFactory
      */
-    protected $_bannerFactory;
+    protected $_brandFactory;
 
     /**
-     * Banner Collection Factory.
+     * Brand Collection Factory.
      *
-     * @var \Acx\Slider\Model\ResourceModel\Banner\CollectionFactory
+     * @var \Acx\BrandSlider\Model\ResourceModel\Brand\CollectionFactory
      */
-    protected $_bannerCollectionFactory;
+    protected $_brandCollectionFactory;
 
     /**
      * Registry object.
@@ -92,8 +78,8 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Acx\Slider\Model\BannerFactory $bannerFactory
-     * @param \Acx\Slider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory
+     * @param \Acx\BrandSlider\Model\BrandFactory $brandFactory
+     * @param \Acx\BrandSlider\Model\ResourceModel\Brand\CollectionFactory $brandCollectionFactory
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
@@ -104,8 +90,8 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Acx\Slider\Model\BannerFactory $bannerFactory,
-        \Acx\Slider\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Acx\BrandSlider\Model\BrandFactory $brandFactory,
+        \Acx\BrandSlider\Model\ResourceModel\Brand\CollectionFactory $brandCollectionFactory,
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -124,8 +110,8 @@ abstract class AbstractAction extends \Magento\Backend\App\Action
         $this->_resultLayoutFactory = $resultLayoutFactory;
         $this->_resultForwardFactory = $resultForwardFactory;
 
-        $this->_bannerFactory = $bannerFactory;
-        $this->_bannerCollectionFactory = $bannerCollectionFactory;
+        $this->_brandFactory = $brandFactory;
+        $this->_brandCollectionFactory = $brandCollectionFactory;
     }
 
     /**

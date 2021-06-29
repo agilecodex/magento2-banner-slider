@@ -1,40 +1,26 @@
 <?php
 
 /**
- * Acx
- *
- * NOTICE OF LICENSE
- *
  * This source file is subject to the agilecodex.com license that is
  * available through the world-wide-web at this URL:
- * http://www.agilecodex.com/license-agreement
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this extension to newer
- * version in the future.
- *
- * @category    Acx
- * @package     Acx_Slider
- * @copyright   Copyright (c) 2016 Acx (http://www.agilecodex.com/)
- * @license     http://www.agilecodex.com/license-agreement
+ * https://www.agilecodex.com/license-agreement
  */
 
-namespace Acx\Slider\Block\Adminhtml\Form\Renderer\Fieldset;
+namespace Acx\BrandSlider\Block\Adminhtml\Form\Renderer\Fieldset;
 
 /**
  * Fieldset element renderer.
  * @category Acx
- * @package  Acx_Slider
- * @module   Slider
- * @author   Wasim haider Chowdhury
+ * @package  Acx_BrandSlider
+ * @module   BrandSlider
+ * @author   dev@agilecodex.com
  */
 class Element extends \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element
 {
     /**
      * Initialize block template.
      */
-    protected $_template = 'Acx_Slider::form/renderer/fieldset/element.phtml';
+    protected $_template = 'Acx_BrandSlider::form/renderer/fieldset/element.phtml';
 
     /**
      * @return string
@@ -59,7 +45,7 @@ class Element extends \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Eleme
      */
     public function canDisplayUseDefault()
     {
-        return ($this->getRequest()->getParam('store') && $this->getElement()->getDateFormat() == NULL && $this->getElementName() != 'slider_id') ? TRUE : FALSE;
+        return ($this->getRequest()->getParam('store') && $this->getElement()->getDateFormat() == NULL && $this->getElementName() != 'brandslider_id') ? TRUE : FALSE;
     }
 
     /**
@@ -79,7 +65,7 @@ class Element extends \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Eleme
      */
     public function checkFieldDisable()
     {
-        if (!$this->getElementStoreViewId() && $this->getElementName() != 'banner_id' && $this->canDisplayUseDefault() && $this->usedDefault()) {
+        if (!$this->getElementStoreViewId() && $this->getElementName() != 'entity_id' && $this->canDisplayUseDefault() && $this->usedDefault()) {
             $this->getElement()->setDisabled(true);
         }
 
@@ -91,7 +77,7 @@ class Element extends \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Eleme
      */
     public function getScopeLabel()
     {
-        if ($this->getElement()->getDateFormat() != null || $this->getElementName() == 'slider_id') {
+        if ($this->getElement()->getDateFormat() != null || $this->getElementName() == 'brandslider_id') {
             return '[GLOBAL]';
         }
 
